@@ -1,11 +1,11 @@
 // src/components/IphoneFrame.js
-import React from 'react';
-import './index.css';
-import { useState } from 'react'; 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCar } from '@fortawesome/free-solid-svg-icons';
-import FakeAppIcon from '../fakeAppIcon/index';
-import RequestRideForm from '../requestRideForm/index';
+import React from "react";
+import "./index.css";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCar } from "@fortawesome/free-solid-svg-icons";
+import FakeAppIcon from "../fakeAppIcon/index";
+import RequestRideForm from "../requestRideForm/index";
 
 const IphoneFrame = ({ children }) => {
   const [openApp, setOpenApp] = useState(null);
@@ -27,7 +27,7 @@ const IphoneFrame = ({ children }) => {
       <div className="screen">
         {openApp ? (
           <div className="app-content">
-            <button className="back-button" onClick={handleBackClick}><FontAwesomeIcon icon="fa-solid fa-arrow-left" /></button>
+            <div className="back-button" onClick={void 0}></div>
             {openApp}
           </div>
         ) : (
@@ -48,4 +48,3 @@ const IphoneFrame = ({ children }) => {
 };
 
 export default IphoneFrame;
-

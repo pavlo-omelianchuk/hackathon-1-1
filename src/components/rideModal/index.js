@@ -89,7 +89,6 @@ const RideModal = ({ isOpen, onRequestClose, pickup, dropoff, isReadyToGetRide }
     dropoff,
     isReadyToGetRide
   );
-  console.log(differenceCarGasolineBike, differenceCarGasolineEVScooter, carbonFootprint);
 
   const openCompanyRankingModal = () => {
     setCompanyRankingModalIsOpen(true);
