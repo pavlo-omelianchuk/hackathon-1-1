@@ -89,6 +89,7 @@ const RideModal = ({ isOpen, onRequestClose, pickup, dropoff, isReadyToGetRide }
     dropoff,
     isReadyToGetRide
   );
+  console.log(differenceCarGasolineBike, differenceCarGasolineEVScooter, carbonFootprint);
 
   const openCompanyRankingModal = () => {
     setCompanyRankingModalIsOpen(true);
@@ -125,7 +126,7 @@ const RideModal = ({ isOpen, onRequestClose, pickup, dropoff, isReadyToGetRide }
         <div style={{ display: "flex", flexDirection: "column" }}>
           <p style={{ color: "white", fontWeight: 400, fontSize: "14px" }}>Bike</p>
           <p style={{ color: "#ffffff80", fontWeight: 400, fontSize: "14px" }}>
-            You will save {differenceCarGasolineBike || "5"}kg
+            You will save {Math.round(differenceCarGasolineBike * 10) / 10 || "5"}kg
           </p>
         </div>
       </div>
@@ -134,9 +135,9 @@ const RideModal = ({ isOpen, onRequestClose, pickup, dropoff, isReadyToGetRide }
           <Image2 />
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <p style={{ color: "white", fontWeight: 400, fontSize: "14px" }}>Bike</p>
+          <p style={{ color: "white", fontWeight: 400, fontSize: "14px" }}>Scooter</p>
           <p style={{ color: "#ffffff80", fontWeight: 400, fontSize: "14px" }}>
-            You will save {differenceCarGasolineEVScooter || "2"}kg
+            You will save {Math.round(differenceCarGasolineEVScooter * 10) / 10 || "2"}kg
           </p>
         </div>
       </div>
