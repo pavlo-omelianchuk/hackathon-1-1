@@ -40,9 +40,9 @@ export default async (request, context) => {
     };
 
     // Calculate the carbon footprint based on the mode of transport
-    const carbonFootprint = distance * (emissionFactors.car_gasoline || 0);
-    const carbonFootprintBike = distance * emissionFactors.bike;
-    const carbonFootprintEVScooter = distance * emissionFactors.ev_scooter;
+    const carbonFootprint = distanceValue * (emissionFactors.car_gasoline || 0);
+    const carbonFootprintBike = distanceValue * emissionFactors.bike;
+    const carbonFootprintEVScooter = distanceValue * emissionFactors.ev_scooter;
 
     // Calculate differences
     const differenceCarGasolineBike = carbonFootprint - carbonFootprintBike;
