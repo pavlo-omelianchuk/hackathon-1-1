@@ -27,7 +27,7 @@ const IphoneFrame = ({ children }) => {
       <div className="screen">
         {openApp ? (
           <div className="app-content">
-            <div className="back-button" onClick={void 0}></div>
+            <div className="back-button" onClick={() => handleBackClick}></div>
             {openApp}
           </div>
         ) : (
