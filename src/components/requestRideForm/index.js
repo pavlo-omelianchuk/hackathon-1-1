@@ -3,8 +3,8 @@ import RideModal from "../rideModal";
 import "./index.css";
 
 const RequestRideForm = () => {
-  const [pickup, setPickup] = useState("Boston,MA");
-  const [dropoff, setDropoff] = useState("Chicago,IL");
+  const [pickup, setPickup] = useState("");
+  const [dropoff, setDropoff] = useState("");
   const [isReadyToGetRide, setIsReadyToGetRide] = useState(false);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);

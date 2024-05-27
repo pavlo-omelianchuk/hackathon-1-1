@@ -5,7 +5,6 @@ export default function useDistanceMatrix(pickup, dropoff, isReadyToGetRide) {
   const [distance, setDistance] = useState(null);
   const [duration, setDuration] = useState(null);
   const [carbonFootprint, setCarbonFootprint] = useState(null);
-  console.log(pickup);
   useEffect(() => {
     if (!pickup || !dropoff || !isReadyToGetRide) {
       return;

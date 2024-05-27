@@ -1,5 +1,4 @@
 export default async (request, context) => {
-  console.log("context", context);
   const { searchParams } = new URL(request.url);
   const apiKey = "AIzaSyAGtrYV4g9feB2dZUQrVXKGkWQFnXgB3IU";
   const origins = searchParams.get("origins") || "Washington,DC";
@@ -33,17 +32,38 @@ export default async (request, context) => {
       distanceValue = element.distance.value;
       duration = element.duration.text;
     }
+    const emissionFactors = {
+      car_gasoline: 0.156,
+      car_diesel: 0.187,
+      ev_scooter: 0.03,
+      bike: 0,
+    };
 
-    // calculate the carbon footprint for the distance if you go by car
-    const carbonFootprint = distanceValue ? (distanceValue / 1000) * 0.2 : null;
+    // Calculate the carbon footprint based on the mode of transport
+    const carbonFootprint = distance * (emissionFactors.car_gasoline || 0);
+    const carbonFootprintBike = distance * emissionFactors.bike;
+    const carbonFootprintEVScooter = distance * emissionFactors.ev_scooter;
 
-    return new Response(JSON.stringify({ distance, duration, carbonFootprint }), {
-      status: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    });
+    // Calculate differences
+    const differenceCarGasolineBike = carbonFootprint - carbonFootprintBike;
+    const differenceCarGasolineEVScooter = carbonFootprint - carbonFootprintEVScooter;
+
+    return new Response(
+      JSON.stringify({
+        distance,
+        duration,
+        carbonFootprint,
+        differenceCarGasolineBike,
+        differenceCarGasolineEVScooter,
+      }),
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
+      }
+    );
   } catch (error) {
     console.log(error);
     return new Response(JSON.stringify({ error: "Failed fetching data" }), {
