@@ -1,6 +1,7 @@
 export default async (request, context) => {
   const { searchParams } = new URL(request.url);
-  const apiKey = "AIzaSyAGtrYV4g9feB2dZUQrVXKGkWQFnXgB3IU";
+  const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+  console.log(apiKey);
   const origins = searchParams.get("origins") || "Washington,DC";
   const destinations = searchParams.get("destinations") || "New York City,NY";
 
